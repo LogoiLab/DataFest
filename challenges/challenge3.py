@@ -45,7 +45,7 @@ plt.plot(d4.index, d4["clicks"], label="Retail")
 plt.plot(d5.index, d5["clicks"], label="Tech Software")
 
 plt.xlabel("Date")
-plt.ylabel("Average clicks")
+plt.ylabel("Total clicks")
 
 plt.xlim([datetime.date(2016, 10, 31), datetime.date(2018, 1, 1)])
 
