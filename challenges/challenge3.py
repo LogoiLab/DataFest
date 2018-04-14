@@ -20,23 +20,23 @@ d5 = data[data["normTitleCategory"] == "techsoftware"][["date", "clicks"]]
 
 d1["date"] = pd.to_datetime(d1["date"])
 d1.set_index("date", inplace=True)
-d1 = d1.groupby(pd.Grouper(freq="M")).mean()
+d1 = d1.groupby(pd.Grouper(freq="M")).sum()
 
 d2["date"] = pd.to_datetime(d2["date"])
 d2.set_index("date", inplace=True)
-d2 = d2.groupby(pd.Grouper(freq="M")).mean()
+d2 = d2.groupby(pd.Grouper(freq="M")).sum()
 
 d3["date"] = pd.to_datetime(d3["date"])
 d3.set_index("date", inplace=True)
-d3 = d3.groupby(pd.Grouper(freq="M")).mean()
+d3 = d3.groupby(pd.Grouper(freq="M")).sum()
 
 d4["date"] = pd.to_datetime(d4["date"])
 d4.set_index("date", inplace=True)
-d4 = d4.groupby(pd.Grouper(freq="M")).mean()
+d4 = d4.groupby(pd.Grouper(freq="M")).sum()
 
 d5["date"] = pd.to_datetime(d5["date"])
 d5.set_index("date", inplace=True)
-d5 = d1.groupby(pd.Grouper(freq="M")).mean()
+d5 = d1.groupby(pd.Grouper(freq="M")).sum()
 
 plt.plot(d1.index, d1["clicks"], label="Management")
 plt.plot(d2.index, d2["clicks"], label="Admin")
