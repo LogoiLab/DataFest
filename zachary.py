@@ -3,5 +3,5 @@
 from analyze import *
 
 # Better description == better review?
-q2 = data[["descriptionWordCount", "numReviews"]]
+q2 = jobs[["descriptionWordCount", "numReviews"]]
 q2 = q2.dropna()
