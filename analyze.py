@@ -25,5 +25,3 @@ WHERE id IN (SELECT id
     return ret
 
 conn = sqlite3.connect("data/indeed.db")
-
-jobs = random_n(1000000)
