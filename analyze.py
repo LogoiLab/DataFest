@@ -16,7 +16,7 @@ with sqlite3.connect("data/indeed.db") as conn:
     jobs = cur.execute("""
 SELECT *
 FROM jobs
-LIMIT 100000
+LIMIT 1000000
 """)
 
     names = [x[0] for x in cur.description]
@@ -24,4 +24,3 @@ LIMIT 100000
 
 data = pd.DataFrame(rows, columns=names)
 data.replace('', np.nan, inplace=True)
-data = data.dropna()
