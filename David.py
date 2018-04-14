@@ -7,5 +7,9 @@ Created on Sat Apr 14 10:38:59 2018
 """
 
 from analyze import *
+import matplotlib.pyplot as plt
 
-print(jobs.head())
+states = jobs[["stateProvince", "city", "country", "industry", "normTitle", "experienceRequired", "estimatedSalary"]]
+sns.countplot(data = jobs, x = "country")
+
+things = pd.crosstab(states.country)
