@@ -1,3 +1,4 @@
+import datetime
 import sqlite3
 
 import matplotlib.pyplot as plt
@@ -9,7 +10,6 @@ data = pd.read_sql(f"""
 SELECT date, clicks, normTitleCategory
 FROM jobs
 WHERE normTitleCategory IN ("management", "admin", "sales", "retail", "techsoftware")
-LIMIT 1000000
 """, conn)
 
 d1 = data[data["normTitleCategory"] == "management"][["date", "clicks"]]
@@ -46,6 +46,8 @@ plt.plot(d5.index, d5["clicks"], label="Tech Software")
 
 plt.xlabel("Date")
 plt.ylabel("Average clicks")
+
+plt.xlim([datetime.date(2016, 11, 1), datetime.date(2017, 11, 30)])
 
 plt.legend()
 plt.show()
