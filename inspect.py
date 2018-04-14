@@ -5,3 +5,8 @@ DataFest
 Spring 2018
 """
 
+import sqlite3
+
+with sqlite3.connect("data/indeed.db") as conn:
+    cur = conn.cursor()
+
