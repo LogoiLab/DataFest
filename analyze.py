@@ -16,10 +16,13 @@ def random_n(num_rows):
     return pd.read_sql(f"""
 SELECT *
 FROM jobs
-LIMIT {num_rows}
+WHERE id IN (SELECT id
+             FROM jobs
+             ORDER BY RANDOM()
+             LIMIT {num_rows})
 """, conn)
 
 conn = sqlite3.connect("data/indeed.db")
 
-jobs = random_n(5000000)
+jobs = random_n(50)
 jobs.replace("", np.nan, inplace=True)
