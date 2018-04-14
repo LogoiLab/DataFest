@@ -12,4 +12,4 @@ import matplotlib.pyplot as plt
 states = jobs[["stateProvince", "city", "country", "industry", "normTitle", "experienceRequired", "estimatedSalary"]]
 sns.countplot(data = jobs, x = "country")
 
-things = pd.crosstab(states.country)
+
