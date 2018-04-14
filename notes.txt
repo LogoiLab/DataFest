@@ -1,14 +1,14 @@
 Conclusions to try:
     1. Per demographic, what kind of job might be best for you?
-    2. Better description == better review?
-    3. How are clicks related to job quality?
-    4. Can you tell how highly rated a company is from clicks?
-    5. As an employer, how would I get the most clicks?
+    2. Better description == better review? - Zack
+    3. How are clicks related to job quality? - Chad
+    4. Can you tell how highly rated a company is from clicks? - Zack
+    5. As an employer, how would I get the most clicks? - Zack
     6. High school finished - which job?
         - Experience and degree level.
     7. Indeed data vs. Government data.
         - More job openings == better economy?
     8. Outsourcing?
-    9. Location vs. degree level.
-    10. Normed job desc vs. full.
-    11. Does multiple posting == spammy jobs?
+    9. Location vs. degree level. - David
+    10. Normed job desc vs. full. - David
+    11. Does multiple posting == spammy jobs? - Chad
