@@ -9,6 +9,7 @@ import sqlite3
 
 import numpy as np
 import pandas as pd
+import seaborn as sns
 
 with sqlite3.connect("data/indeed.db") as conn:
     cur = conn.cursor()
