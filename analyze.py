@@ -25,3 +25,4 @@ LIMIT 100000
 data = pd.DataFrame(rows, columns=names)
 data.replace('', np.nan, inplace=True)
 data = data.dropna()
+print ((len(data)/100000) * 100)
