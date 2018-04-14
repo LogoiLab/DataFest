@@ -1,22 +1,31 @@
 #!/usr/bin/env python3
 # Zachary Zwierko, 04/14/2018
 
-from sklearn.preprocessing import MinMaxScaler
-
 from analyze import *
 
-min_max_scaler = MinMaxScaler()
+ROW_N = 1000000
+
+jobs = random_n(ROW_N)
+jobs = jobs.dropna()
 
 # Better description == better review?
-q2 = jobs[["descriptionWordCount", "numReviews"]]
-q2 = q2.dropna()
+def q2():
+    with plt.xkcd():
+        plt.figure()
+        sns.jointplot("descriptionWordCount", "numReviews",
+                      data=jobs, kind="reg")
+        plt.xlim(0, jobs["descriptionWordCount"].max())
+        plt.ylim(0, jobs["numReviews"].max())
 
-sns.regplot("descriptionWordCount", "numReviews",
-            data=jobs, fit_reg=False, scatter_kws={"s": 1})
-plt.show()
+def q4():
+    with plt.xkcd():
+        plt.figure()
+        sns.jointplot("avgOverallRating", "clicks",
+                      data=jobs, kind="reg")
+        plt.xlim(0, jobs["avgOverallRating"].max())
+        plt.ylim(0, jobs["clicks"].max())
 
-# Can you tell how highly rated a company is from clicks?
-# q4 = jobs[["avgOverallRating", "clicks"]]
-# q4 = q4.dropna()
-# sns.regplot("descriptionWordCount", "numReviews", data=jobs)
-# plt.show()
+if __name__ == "__main__":
+   q2()
+
+   plt.show()
