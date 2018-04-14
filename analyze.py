@@ -27,4 +27,3 @@ WHERE id IN (SELECT id
 conn = sqlite3.connect("data/indeed.db")
 
 jobs = random_n(1000000)
-jobs.replace("", np.nan, inplace=True)
