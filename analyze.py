@@ -11,20 +11,17 @@ import numpy as np
 import pandas as pd
 import seaborn as sns
 
-with sqlite3.connect("data/indeed.db") as conn:
-    cur = conn.cursor()
-
-    jobs = cur.execute("""
+def random_n(num_rows):
+    return pd.read_sql(f"""
 SELECT *
 FROM jobs
-LIMIT 1000000
-""")
+WHERE jobid IN (SELECT jobid
+                FROM jobs
+                ORDER BY RANDOM()
+                LIMIT {num_rows})
+""", conn)
 
-    names = [x[0] for x in cur.description]
-    rows = jobs.fetchall()
+conn = sqlite3.connect("data/indeed.db")
 
-data = pd.DataFrame(rows, columns=names)
-data.replace('', np.nan, inplace=True)
-
-def random_n(num_rows):
-    return pd.read_sql("SELECT * FROM jobs WHERE id IN (SELECT id FROM jobs ORDER BY RANDOM() LIMIT " + str(num_rows) + ")", conn)
+jobs = random_n(100000)
+jobs.replace("", np.nan, inplace=True)

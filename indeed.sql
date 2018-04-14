@@ -1,4 +1,5 @@
 CREATE TABLE jobs (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
     date DATE NOT NULL,
     companyId TEXT NOT NULL,
     jobId TEXT NOT NULL,
