@@ -15,7 +15,7 @@ import pandas as pd
 
 from analyze import *
 
-jobs = random_n(5000)
+jobs = random_n(1000)
 jobs = jobs[['experienceRequired', 'supervisingJob']]
 jobs = jobs.dropna()
 
@@ -39,4 +39,8 @@ jobs = jobs.dropna()
 #print(scores)
 with plt.xkcd():
     sns.boxplot(x="supervisingJob", y="experienceRequired", data=jobs, notch=True)
+    plt.title("Significance of Supervising Position on Experience")
+    plt.ylabel("Experience Required (in years)")
+    plt.xlabel("Is a Supervising Position")
+    plt.xticks([0.0,1.0], ["True", "False"])
     plt.show()
