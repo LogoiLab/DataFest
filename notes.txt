@@ -1,6 +1,7 @@
 Conclusions to try:
     1. Per demographic, what kind of job might be best for you?
-    2. Better description == better review? - Zack
+*    2. Longer description == better review? - Zack
+        - False. Brevity is the soul of wit.
     3. How are clicks related to job quality? - Chad
     4. Can you tell how highly rated a company is from clicks? - Zack
     5. As an employer, how would I get the most clicks? - Zack

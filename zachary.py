@@ -11,9 +11,8 @@ min_max_scaler = MinMaxScaler()
 q2 = jobs[["descriptionWordCount", "numReviews"]]
 q2 = q2.dropna()
 
-q2 = pd.DataFrame(min_max_scaler.fit_transform(q2.values))
-
-sns.regplot("descriptionWordCount", "numReviews", data=jobs, fit_reg=False, scatter_kws={"s": 1})
+sns.regplot("descriptionWordCount", "numReviews",
+            data=jobs, fit_reg=False, scatter_kws={"s": 1})
 plt.show()
 
 # Can you tell how highly rated a company is from clicks?
