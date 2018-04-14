@@ -9,6 +9,7 @@ import sqlite3
 
 import numpy as np
 import pandas as pd
+import seaborn as sns
 
 with sqlite3.connect("data/indeed.db") as conn:
     cur = conn.cursor()
@@ -16,7 +17,7 @@ with sqlite3.connect("data/indeed.db") as conn:
     jobs = cur.execute("""
 SELECT *
 FROM jobs
-LIMIT 100000
+LIMIT 1000000
 """)
 
     names = [x[0] for x in cur.description]
@@ -25,3 +26,7 @@ LIMIT 100000
 data = pd.DataFrame(rows, columns=names)
 data.replace('', np.nan, inplace=True)
 data = data.dropna()
+
+def random_n(num_rows):
+    return pd.read_sql("SELECT * FROM jobs WHERE id IN (SELECT id FROM jobs ORDER BY RANDOM() LIMIT " + str(num_rows) + ")", conn)
+
