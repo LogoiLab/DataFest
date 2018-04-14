@@ -47,7 +47,7 @@ plt.plot(d5.index, d5["clicks"], label="Tech Software")
 plt.xlabel("Date")
 plt.ylabel("Average clicks")
 
-plt.xlim([datetime.date(2016, 11, 1), datetime.date(2017, 11, 30)])
+plt.xlim([datetime.date(2016, 10, 31), datetime.date(2018, 1, 1)])
 
 plt.legend()
 plt.show()
