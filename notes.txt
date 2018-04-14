@@ -5,16 +5,10 @@ Conclusions to try:
     4. Can you tell how highly rated a company is from clicks?
     5. As an employer, how would I get the most clicks?
     6. High school finished - which job?
-<<<<<<< HEAD
         - Experience and degree level.
-=======
->>>>>>> 456a5db03368bb5d8412843e04aae4f30847a8a3
     7. Indeed data vs. Government data.
         - More job openings == better economy?
     8. Outsourcing?
     9. Location vs. degree level.
     10. Normed job desc vs. full.
-<<<<<<< HEAD
     11. Does multiple posting == spammy jobs?
-=======
->>>>>>> 456a5db03368bb5d8412843e04aae4f30847a8a3
