@@ -26,4 +26,4 @@ data = pd.DataFrame(rows, columns=names)
 data.replace('', np.nan, inplace=True)
 
 def random_n(num_rows):
-    return pd.read_sql("SELECT * FROM jobs WHERE id IN (SELECT id FROM jobs ORDER BY RANDOM() LIMIT " + str(n) + ")", conn)
+    return pd.read_sql("SELECT * FROM jobs WHERE id IN (SELECT id FROM jobs ORDER BY RANDOM() LIMIT " + str(num_rows) + ")", conn)
