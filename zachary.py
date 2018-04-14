@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 # Zachary Zwierko, 04/14/2018
 
 from sklearn.preprocessing import MinMaxScaler
