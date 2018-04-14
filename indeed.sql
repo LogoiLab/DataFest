@@ -1,8 +1,7 @@
 CREATE TABLE jobs (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
     date DATE NOT NULL,
-    companyId TEXT NOT NULL,
-    jobId TEXT NOT NULL,
+    companyId TEXT,
+    jobId TEXT,
     country CHAR(2) NOT NULL,
     stateProvince CHAR(2) NOT NULL,
     city TEXT NOT NULL,
@@ -22,4 +21,6 @@ CREATE TABLE jobs (
     educationRequirements TEXT,
     jobAgeDays INTEGER NOT NULL,
     clicks INTEGER NOT NULL,
-    localClicks INTEGER NOT NULL)
+    localClicks INTEGER NOT NULL,
+    id INTEGER PRIMARY KEY AUTOINCREMENT
+)
