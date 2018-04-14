@@ -13,7 +13,7 @@ import pandas as pd
 import seaborn as sns
 
 def random_n(num_rows):
-    return pd.read_sql(f"""
+    ret = pd.read_sql(f"""
 SELECT *
 FROM jobs
 WHERE id IN (SELECT id
@@ -21,6 +21,8 @@ WHERE id IN (SELECT id
              ORDER BY RANDOM()
              LIMIT {num_rows})
 """, conn)
+    ret.replace("", np.nan, inplace=True)
+    return ret
 
 conn = sqlite3.connect("data/indeed.db")
 
