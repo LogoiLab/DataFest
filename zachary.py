@@ -25,7 +25,11 @@ def q4():
         plt.xlim(0, jobs["avgOverallRating"].max())
         plt.ylim(0, jobs["clicks"].max())
 
+def t1():
+    with plt.xkcd():
+        plt.figure()
+        sns.regplot("estimatedSalary", "clicks", data=jobs)
 if __name__ == "__main__":
-   q2()
+   t1()
 
    plt.show()
