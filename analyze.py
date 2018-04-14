@@ -21,10 +21,9 @@ WHERE id IN (SELECT id
              ORDER BY RANDOM()
              LIMIT {num_rows})
 """, conn)
+
     ret.replace("", np.nan, inplace=True)
+
     return ret
 
 conn = sqlite3.connect("data/indeed.db")
-
-jobs = random_n(1000000)
-jobs.replace("", np.nan, inplace=True)
