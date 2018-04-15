@@ -26,4 +26,8 @@ WHERE id IN (SELECT id
 
     return ret
 
+def query_db(query_str):
+    return pd.read_sql(query_str, conn)
+
 conn = sqlite3.connect("data/indeed.db")
+
