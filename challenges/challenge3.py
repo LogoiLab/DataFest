@@ -44,6 +44,7 @@ plt.plot(d3.index, d3["clicks"], label="Sales")
 plt.plot(d4.index, d4["clicks"], label="Retail")
 plt.plot(d5.index, d5["clicks"], label="Tech Software")
 
+plt.title("Data Challenege #3")
 plt.xlabel("Date")
 plt.ylabel("Total clicks")
 
