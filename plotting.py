@@ -7,7 +7,7 @@ from scipy.stats import pearsonr
 
 from analyze import *
 
-ROW_N = 50
+ROW_N = 500000
 
 def compare(x, y, is_cat=False, title=None, xlabel=None, ylabel=None):
     with plt.xkcd():
@@ -36,3 +36,38 @@ def compare(x, y, is_cat=False, title=None, xlabel=None, ylabel=None):
         plt.savefig(f"plot{random.randint(0, 10000)}.png")
 
 compare("normTitleCategory", "clicks", is_cat=True)
+compare("estimatedSalary", "clicks")
+compare("industry", "clicks", is_cat=True)
+compare("country", "clicks", is_cat=True)
+compare("state", "clicks", is_cat=True)
+compare("city", "clicks", is_cat=True)
+compare("averageOverallRating", "clicks")
+compare("numReviews", "clicks")
+compare("averageOverallRating", "clicks")
+compare("descriptionCharacterLength", "clicks")
+compare("descriptionWordCount", "clicks")
+compare("experienceRequired", "clicks")
+compare("jobLanguage", "clicks", is_cat=True)
+compare("supervisingJob", "clicks", is_cat=True)
+compare("licenseRequiredJob", "clicks", is_cat=True)
+compare("educationRequirements", "clicks", is_cat=True)
+compare("jobAgeDays", "clicks")
+compare("localClicks", "clicks")
+
+compare("normTitleCategory", "jobAgeDays", is_cat=True)
+compare("estimatedSalary", "jobAgeDays")
+compare("industry", "jobAgeDays", is_cat=True)
+compare("country", "jobAgeDays", is_cat=True)
+compare("state", "jobAgeDays", is_cat=True)
+compare("city", "jobAgeDays", is_cat=True)
+compare("averageOverallRating", "jobAgeDays")
+compare("numReviews", "jobAgeDays")
+compare("averageOverallRating", "jobAgeDays")
+compare("descriptionCharacterLength", "jobAgeDays")
+compare("descriptionWordCount", "jobAgeDays")
+compare("experienceRequired", "jobAgeDays")
+compare("jobLanguage", "jobAgeDays", is_cat=True)
+compare("supervisingJob", "jobAgeDays", is_cat=True)
+compare("licenseRequiredJob", "jobAgeDays", is_cat=True)
+compare("educationRequirements", "jobAgeDays", is_cat=True)
+compare("localClicks", "jobAgeDays")
