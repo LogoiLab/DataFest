@@ -29,7 +29,8 @@ def compare(x, y, is_cat=False, title=None, xlabel=None, ylabel=None):
 
                     ax.text(0.5, 0.5, f"p-value: {pval:.4f}", transform=ax.transAxes, fontsize=10)
 
-                plt.title(title)
+                if title:
+                    plt.title(title)
                 plt.xlabel(xlabel or x)
                 plt.ylabel(ylabel or y)
 
