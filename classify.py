@@ -6,7 +6,6 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 from analyze import *
-from plotting import *
 
 distinct_titles = query_db("SELECT DISTINCT normTitle FROM jobs")
 test_vals = query_db(f"SELECT estimatedSalary from jobs limit 50")
