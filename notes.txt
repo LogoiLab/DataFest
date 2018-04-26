@@ -24,3 +24,5 @@ salary and title fixed.
 5 total if possible.
 shortest wait time, balanced 60/40
 how detailed?
+
+PRAGMA table_info(table_name);
