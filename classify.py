@@ -8,7 +8,7 @@ from scipy.stats import pearsonr
 import random
 
 from analyze import *
-
+from plotting import *
 
 distinct_titles = query_db("SELECT DISTINCT normTitleCategory FROM jobs WHERE 'country' == 'US'")
 test_vals = query_db("SELECT estimatedSalary from jobs WHERE 'country' == 'US' limit 5000")
@@ -22,10 +22,12 @@ def classify(title, salary):
     matches = matches[matches["normTitleCategory"] == title]
     matches = matches[matches["estimatedSalary"].between(salary-5000, salary+5000, inclusive=True)]
     match = matches[matches["clicks"] == matches["clicks"].max()]
+    print(match)
     return match
 
 
 match_list = pd.DataFrame()
+
 test_data = random_n(2000000)
 
 for sal in random_sals:
