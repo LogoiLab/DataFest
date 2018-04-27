@@ -52,4 +52,4 @@ with plt.xkcd():
             plt.xlabel('Salary')
             plt.ylabel('Clicks')
 
-        plt.savefig(f"plot{random.randint(0, 10000)}.png")
+    plt.savefig("plot_clicks_salary.png")
