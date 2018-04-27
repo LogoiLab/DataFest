@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
-# Zachary Zwierko, 04/14/2018
+# Zachary Zwierko, 04/26/2018
 
+import argparse
 import random
 
 from scipy.stats import pearsonr
@@ -9,42 +10,66 @@ from analyze import *
 
 ROW_N = 500000
 
-def compare(x, y, is_cat=False, title=None, xlabel=None, ylabel=None):
+def is_numeric(colname):
+    val, = conn.execute(f"""
+SELECT {colname}
+FROM jobs
+LIMIT 1
+""").fetchone()
+
+    try:
+        float(val)
+    except (TypeError, ValueError):
+        return False
+    else:
+        return True
+
+def compare(col1, col2):
+    col1_num = is_numeric(col1)
+    col2_num = is_numeric(col2)
+
     with plt.xkcd():
         fig, axes = plt.subplots(2, 2, figsize=(10, 8))
 
         for row in axes:
             for ax in row:
-                sample = random_n(ROW_N)[[x, y]].dropna()
+                sample = random_n(ROW_N)[[col1, col2]].dropna()
 
-                if is_cat:
-                    sns.violinplot(x=x, y=y, data=sample,
+                if not col1_num and col2_num:
+                    sns.violinplot(x=col1, y=col2, data=sample,
                                    ax=ax, orient="vertical")
                     ax.set_xticks([])
+                    plt.xlabel(col1)
+                    plt.ylabel(col2)
+                elif col1_num and not col2_num:
+                    sns.violinplot(x=col2, y=col1, data=sample,
+                                   ax=ax, orient="vertical")
+                    ax.set_xticks([])
+                    plt.xlabel(col2)
+                    plt.ylabel(col1)
+                elif not col1_num and not col2_num:
+                    sns.countplot(x=col1, data=sample)
+                    sns.countplot(x=col2, data=sample)
+                    plt.xlabel(col1)
+                    plt.ylabel(col2)
                 else:
-                    _, pval = pearsonr(sample[x], sample[y])
+                    _, pval = pearsonr(sample[col1], sample[col2])
 
-                    sns.regplot(x=x, y=y, data=sample,
+                    sns.regplot(x=col1, y=col2, data=sample,
                                 ax=ax, fit_reg=False, scatter_kws={"s": 1}, marker=".")
+                    plt.xlabel(col1)
+                    plt.ylabel(col2)
 
                     ax.text(0.5, 0.5, f"p-value: {pval:.4f}", transform=ax.transAxes, fontsize=10)
 
-                if title:
-                    plt.title(title)
-                plt.xlabel(xlabel or x)
-                plt.ylabel(ylabel or y)
-
         plt.savefig(f"plot{random.randint(0, 10000)}.png")
 
-compare("stateProvince", "clicks", is_cat=True)
-compare("city", "clicks", is_cat=True)
-compare("avgOverallRating", "clicks")
-compare("numReviews", "clicks")
-compare("descriptionWordCount", "clicks")
-compare("experienceRequired", "clicks")
-compare("jobLanguage", "clicks", is_cat=True)
-compare("supervisingJob", "clicks", is_cat=True)
-compare("licenseRequiredJob", "clicks", is_cat=True)
-compare("educationRequirements", "clicks", is_cat=True)
-compare("jobAgeDays", "clicks")
-compare("localClicks", "clicks")
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(prog="plotting.py")
+    parser.add_argument("-i", "--important")
+    parser.add_argument("-t", "--test", nargs="+")
+
+    args = parser.parse_args()
+
+    for test in args.test:
+        compare(args.important, test)
