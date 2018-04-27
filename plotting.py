@@ -36,13 +36,6 @@ def compare(x, y, is_cat=False, title=None, xlabel=None, ylabel=None):
 
         plt.savefig(f"plot{random.randint(0, 10000)}.png")
 
-compare("stateProvince", "clicks", is_cat=True)
-compare("city", "clicks", is_cat=True)
-compare("avgOverallRating", "clicks")
-compare("numReviews", "clicks")
-compare("descriptionWordCount", "clicks")
-compare("experienceRequired", "clicks")
-compare("jobLanguage", "clicks", is_cat=True)
 compare("supervisingJob", "clicks", is_cat=True)
 compare("licenseRequiredJob", "clicks", is_cat=True)
 compare("educationRequirements", "clicks", is_cat=True)

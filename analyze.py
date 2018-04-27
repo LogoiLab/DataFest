@@ -31,6 +31,6 @@ def query_db(query_str):
 
 conn = sqlite3.connect("data/indeed.db")
 
-jobs = random_n(1000)
+jobs = random_n(10000)
 jobs.replace("", np.nan, inplace=True)
 
