@@ -10,8 +10,8 @@ import random
 from analyze import *
 from plotting import *
 
-distinct_titles = query_db("SELECT DISTINCT normTitleCategory FROM jobs")
-test_vals = query_db("SELECT estimatedSalary from jobs limit 5000")
+distinct_titles = query_db("SELECT DISTINCT normTitleCategory FROM jobs WHERE 'country' == 'US'")
+test_vals = query_db("SELECT estimatedSalary from jobs WHERE 'country' == 'US' limit 5000")
 print(test_vals.mean())
 print(test_vals.std())
 random_sals = np.random.normal(test_vals.mean(), test_vals.std(), 2000000)
@@ -54,4 +54,4 @@ with plt.xkcd():
             plt.xlabel('Salary')
             plt.ylabel('Clicks')
 
-        plt.savefig(f"plot{random.randint(0, 10000)}.png")
+    plt.savefig("plot_clicks_salary.png")
