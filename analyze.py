@@ -14,20 +14,23 @@ import seaborn as sns
 
 def random_n(num_rows):
     ret = pd.read_sql(f"""
-SELECT *
-FROM jobs
-WHERE id IN (SELECT id
-             FROM jobs
-             ORDER BY RANDOM()
-             LIMIT {num_rows})
-""", conn)
-
+                      SELECT *
+                      FROM jobs
+                      WHERE id IN (SELECT id
+                                   FROM jobs
+                                   where country = 'US'
+                                   ORDER BY RANDOM()
+                                   LIMIT {num_rows})
+                      
+                """, conn)
     ret.replace("", np.nan, inplace=True)
-
     return ret
 
 def query_db(query_str):
     return pd.read_sql(query_str, conn)
 
 conn = sqlite3.connect("data/indeed.db")
+
+jobs = random_n(1000)
+jobs.replace("", np.nan, inplace=True)
 
