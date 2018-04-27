@@ -11,18 +11,20 @@ from analyze import *
 ROW_N = 500000
 
 def is_numeric(colname):
-    val, = conn.execute(f"""
+    result = conn.execute(f"""
 SELECT {colname}
 FROM jobs
+WHERE {colname}
 LIMIT 1
 """).fetchone()
 
-    try:
-        float(val)
-    except (TypeError, ValueError):
-        return False
-    else:
+    if result:
+        try:
+            float(result[0])
+        except (TypeError, ValueError):
+            return False
         return True
+    return False
 
 def compare(col1, col2):
     col1_num = is_numeric(col1)
@@ -36,14 +38,12 @@ def compare(col1, col2):
                 sample = random_n(ROW_N)[[col1, col2]].dropna()
 
                 if not col1_num and col2_num:
-                    sns.violinplot(x=col1, y=col2, data=sample,
-                                   ax=ax, orient="vertical")
+                    sns.violinplot(x=col1, y=col2, data=sample, ax=ax, orient="vertical")
                     ax.set_xticks([])
                     plt.xlabel(col1)
                     plt.ylabel(col2)
                 elif col1_num and not col2_num:
-                    sns.violinplot(x=col2, y=col1, data=sample,
-                                   ax=ax, orient="vertical")
+                    sns.violinplot(x=col2, y=col1, data=sample, ax=ax, orient="vertical")
                     ax.set_xticks([])
                     plt.xlabel(col2)
                     plt.ylabel(col1)
